@@ -49,7 +49,7 @@ const Footer = () => {
                                 </svg>
                             </a>
                         </li>
-                        <li></li>
+                        <li>
                             <a href="">
                                 <svg className={styles.footerSocIcon} width="20" height="20">
                                     <use href=""></use>

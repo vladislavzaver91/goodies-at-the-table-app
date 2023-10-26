@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styles from './styles.module.css';
 
 const Header = ({ keywords, setKeywords }) => {
@@ -8,13 +9,15 @@ const Header = ({ keywords, setKeywords }) => {
                 <nav className={styles.navigation}>
                     <ul>
                         <li>
-                            <a href="">Home</a>
+                            <NavLink to="/" end>
+                                Home
+                            </NavLink>
                         </li>
                         <li>
-                            <a href="">Recipes</a>
+                            <NavLink to='recipes'>Recipes</NavLink>
                         </li>
                         <li>
-                            <a href="">About us</a>
+                            <NavLink to='about_us'>About us</NavLink>
                         </li>
                     </ul>
                 </nav>
