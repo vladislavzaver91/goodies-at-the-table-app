@@ -3,7 +3,7 @@ import RecipesList from "../../components/RecipesList/RecipesList";
 import TopRecipes from "../../components/TopRecipes/TopRecipes";
 import Footer from '../../components/Footer/Footer';
 
-const Recipes = () => {
+const RecipesPage = () => {
     return (
         <main>
             <Hero />
@@ -14,4 +14,4 @@ const Recipes = () => {
     )
 }
 
-export default Recipes;
+export default RecipesPage;
