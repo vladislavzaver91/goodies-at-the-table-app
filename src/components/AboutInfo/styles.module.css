@@ -1,0 +1,21 @@
+.section {
+    padding-top: 75px;
+    padding-bottom: 75px;
+}
+
+.container {
+    margin: 0 auto;
+    padding-left: 144px;
+    padding-right: 144px;
+    width: 1152px;
+}
+
+.text {
+    color: black;
+    font-size: 30px;
+    line-height: 1.19;
+}
+
+.text:not(:last-child) {
+    margin-bottom: 24px;
+}
