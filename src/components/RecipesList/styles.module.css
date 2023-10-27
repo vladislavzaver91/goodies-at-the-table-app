@@ -1,25 +1,3 @@
-.section {
-    padding-top: 33px;
-    padding-bottom: 107px;
-}
-
-.container {
-    margin: 0 auto;
-    padding-left: 126px;
-    padding-right: 126px;
-    width: 1188px;
-}
-
-.title {
-    margin-bottom: 65px;
-
-    color: black;
-    font-weight: bold;
-    font-size: 40px;
-    line-height: 1.17;
-    text-align: center;
-}
-
 .list .item + .item {
     margin-top: 65px;
 }

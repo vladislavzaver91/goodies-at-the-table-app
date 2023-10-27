@@ -1,5 +1,5 @@
 import Hero from "../../components/Hero/Hero";
-import RecipesList from "../../components/RecipesList/RecipesList";
+import Recipes from "../../components/Recipes/Recipes";
 import TopRecipes from "../../components/TopRecipes/TopRecipes";
 import Footer from '../../components/Footer/Footer';
 
@@ -8,7 +8,7 @@ const RecipesPage = () => {
         <main>
             <Hero />
             <TopRecipes />
-            <RecipesList />
+            <Recipes />
             <Footer />
         </main>
     )
