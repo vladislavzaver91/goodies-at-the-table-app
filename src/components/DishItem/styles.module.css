@@ -1,0 +1,62 @@
+.item:not(:first-child){
+    margin-top: 65px;
+}
+
+.item {
+    display: flex;
+    border-radius: 22px;
+
+    background-color: #F5F2F2;
+}
+
+.wrapper {
+    padding: 41px;
+    width: 786px;
+}
+
+.titleItem {
+    margin-bottom: 32px;
+    color: black;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 1.17;
+}
+
+.textWrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.text {
+    margin-bottom: 32px;
+    color: black;
+    font-size: 20px;
+    line-height: 1.19;
+}
+
+.price {
+    margin-bottom: 41px;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.19;
+}
+
+.btn {
+    border: none;
+    border-radius: 22px;
+    padding: 9px 33px;
+
+    color: black;
+    background-color: #FFDB63;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 1.19;
+    cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus {
+    color: #FFE9A1;
+    background-color: #884619;
+}

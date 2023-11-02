@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import HomePage from './pages/HomePage/HomePage';
-import RecipesPage from './pages/RecipesPage/RecipesPage';
+import DishesPage from './pages/DishesPage/DishesPage';
 import AboutPage from "./pages/AboutPage/AboutPage";
 import Layout from "./components/Layout/Layout";
-import RecipeItemPage from "./pages/RecipeItemPage/RecipeItemPage";
+import DishItemPage from "./pages/DishItemPage/DishItemPage";
 
 const App = () => {
   return (
@@ -11,8 +11,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="recipes" element={<RecipesPage />} />
-          <Route path="/:recipeId" element={<RecipeItemPage />} />
+          <Route path="dishes" element={<DishesPage />} />
+          <Route path="/:dishId" element={<DishItemPage />} />
           <Route path="about_us" element={<AboutPage />} />
         </Route>
       </Routes>
