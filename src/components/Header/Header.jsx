@@ -14,7 +14,7 @@ const Header = ({ keywords, setKeywords }) => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to='recipes'>Recipes</NavLink>
+                            <NavLink to='dishes'>Dishes</NavLink>
                         </li>
                         <li>
                             <NavLink to='about_us'>About us</NavLink>
@@ -26,7 +26,7 @@ const Header = ({ keywords, setKeywords }) => {
                         type="text"
                         value={keywords}
                         onChange={(evt) => setKeywords(evt.target.value)}
-                        placeholder="Search for a recipe"
+                        placeholder="Search for a dish"
                         className={styles.input} />
                 </div>
             </div>

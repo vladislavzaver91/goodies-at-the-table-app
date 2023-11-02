@@ -1,28 +1,38 @@
-.list .item + .item {
-    margin-top: 65px;
+.item:not(:first-child) {
+    margin-left: 38px;
 }
 
 .item {
-    display: flex;
     border-radius: 22px;
-
     background-color: #F5F2F2;
 }
 
 .wrapper {
-    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 196px;
+    padding-top: 28px;
+    padding-bottom: 40px;
+    padding-left: 38px;
+    padding-right: 38px;
 }
 
-.titleItem {
-    margin-bottom: 41px;
+.title {
+    margin-bottom: 18px;
     color: black;
     font-weight: bold;
-    font-size: 40px;
-    line-height: 1.17;
+    font-size: 20px;
+    line-height: 1.19;
+}
+
+.textWrapper {
+    display: flex;
+    justify-content: space-between;
 }
 
 .text {
-    margin-bottom: 41px;
+    margin-bottom: 18px;
     color: black;
     font-size: 20px;
     line-height: 1.19;
