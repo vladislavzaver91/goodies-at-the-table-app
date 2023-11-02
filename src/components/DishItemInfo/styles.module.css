@@ -1,0 +1,69 @@
+.container {
+    margin: 0 auto;
+    padding-left: 144px;
+    padding-right: 144px;
+    width: 1152px;
+}
+
+.contantTitle {
+    max-width: 899px;
+    margin-left: auto;
+    margin-right: auto;
+
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 1.36;
+    text-align: center;
+    letter-spacing: 0.06em;
+}
+
+.contantDetails {
+    padding-top: 48px;
+    padding-bottom: 48px;
+}
+
+.gridWrapper {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    gap: 42px;
+    margin-bottom: 40px;
+}
+
+.contantDetailsTitle {
+    margin-bottom: 18px;
+    color: black;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.ingredientsListItem {
+    display: flex;
+}
+
+.ingredientsListItem .text {
+    margin-left: 20px;
+}
+
+.ingredientsListItem:not(:last-child) {
+    margin-bottom: 24px;
+}
+
+.text {
+    color: black;
+    font-size: 24px;
+    line-height: 1.19;
+}
+
+.mealDetails .text {
+    margin-bottom: 24px;
+}
+
+.mealDetails .contantDetailsTitle {
+    margin-right: 20px;
+}
+
+.additionalInfoWrapper {
+    max-width: 100%;
+}
