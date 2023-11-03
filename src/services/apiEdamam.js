@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const APP_ID = import.meta.env.VITE_CAFE_APP_API_ID
-const APP_KEY = import.meta.env.VITE_CAFE_APP_API_KEY
+export const APP_ID = import.meta.env.VITE_CAFE_APP_API_ID
+export const APP_KEY = import.meta.env.VITE_CAFE_APP_API_KEY
 const BASE_URL = import.meta.env.VITE_CAFE_APP_BASE_API_URL
 
 export const fetchData = async () => {
@@ -12,12 +12,25 @@ export const fetchData = async () => {
                 app_id: APP_ID,
                 health: "alcohol-free",
                 type: "public",
+                imageSize: 'REGULAR',
             },
         })
         return res.data;
     } catch (error) {
         console.log(error);
     }
+};
+
+export const fetchNextPage = (nextPage) => {
+    return axios.get(nextPage, {
+        params: {
+            app_key: APP_KEY,
+            app_id: APP_ID,
+            health: "alcohol-free",
+            type: "public",
+            imageSize: 'REGULAR',
+        },
+    });
 };
 
 export const fetchRandomData = async () => {
@@ -28,6 +41,7 @@ export const fetchRandomData = async () => {
                 app_id: APP_ID,
                 health: "alcohol-free",
                 type: "public",
+                imageSize: 'REGULAR',
                 random: true,
             },
         })

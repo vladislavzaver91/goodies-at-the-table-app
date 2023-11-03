@@ -1,5 +1,4 @@
 import DishItem from '../DishItem/DishItem';
-import styles from './styles.module.css';
 
 const DishesList = ({ dishes }) => {
     return (
@@ -8,10 +7,6 @@ const DishesList = ({ dishes }) => {
                 <DishItem dish={recipe} key={index} />
             ))
             }
-            <button
-                className={styles.btn}
-                type='button'
-            >Show more</button>
         </ul>
     )
 };
