@@ -1,3 +1,32 @@
-.list {
+.arrowsBtnContainer {
     display: flex;
+    justify-content: center;
+    margin-top: 32px;
 }
+
+.arrowsBtn:not(:first-child) {
+    margin-left: 22px;
+}
+
+.arrowsBtn {
+    border: none;
+    border-radius: 22px;
+    padding: 9px 22px;
+
+    color: black;
+    background-color: #FFDB63;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 1.19;
+    cursor: pointer;
+}
+
+.arrowsBtn:hover,
+.arrowsBtn:focus {
+    color: #FFE9A1;
+    background-color: #884619;
+}
+
+
+
+
