@@ -7,11 +7,8 @@ const RecommendationItem = ({ dish }) => {
     const id = uri.split('#')[1];
 
     return (
-        <li
-            className={styles.item}
-            onClick={() => { navigate(`/${id}`) }}
-        >
-            <img src={image} alt={label} width={300} height={212} />
+        <li className={styles.item}>
+            <img src={image} alt={label} className={styles.itemImg} />
             <div className={styles.wrapper}>
                 <h3 className={styles.title}>
                     {label}
@@ -24,7 +21,11 @@ const RecommendationItem = ({ dish }) => {
                         150 UAH
                     </p>
                 </div>
-                <button className={styles.btn}>
+                <button
+                    className={styles.btn}
+                    onClick={() => { navigate(`/${id}`) }}
+                    style={{ width: 'fit-content' }}
+                >
                     More details
                 </button>
             </div>

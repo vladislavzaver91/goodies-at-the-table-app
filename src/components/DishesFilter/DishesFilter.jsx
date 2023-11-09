@@ -2,10 +2,9 @@ import styles from './styles.module.css';
 
 const DishesFilter = ({dishTypes, selectedDishType, setSelectedDishType}) => {
     const handleFilterClick = (dishType) => {
-        setSelectedDishType(dishType);
+        setSelectedDishType(selectedDishType === dishType ? null : dishType);
         console.log(dishType);
     };
-
 
     return (
         <div className={styles.filterButtons}>
