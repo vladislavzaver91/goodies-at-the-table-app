@@ -7,10 +7,7 @@ const DishItem = ({ dish }) => {
     const id = uri.split('#')[1];
 
     return (
-        <li
-            onClick={() => { navigate(`/${id}`) }}
-            className={styles.item}
-        >
+        <li className={styles.item}>
             <img src={image} alt={label} width={300} height={300} />
             <div className={styles.wrapper}>
                 <h3 className={styles.titleItem}>
@@ -25,7 +22,10 @@ const DishItem = ({ dish }) => {
                     </p>
                 </div>
                 
-                <button className={styles.btn}>
+                <button
+                    className={styles.btn}
+                    onClick={() => { navigate(`/${id}`) }}
+                >
                     More details
                 </button>
             </div>
