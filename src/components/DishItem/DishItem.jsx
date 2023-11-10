@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import Button from '../Button/Button';
 import styles from './styles.module.css';
 
 const DishItem = ({ dish }) => {
@@ -21,13 +22,7 @@ const DishItem = ({ dish }) => {
                         150 UAH
                     </p>
                 </div>
-                
-                <button
-                    className={styles.btn}
-                    onClick={() => { navigate(`/${id}`) }}
-                >
-                    More details
-                </button>
+                <Button id={id}/>
             </div>
         </li>
     );
