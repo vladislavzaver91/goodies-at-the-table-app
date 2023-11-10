@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import Button from '../Button/Button';
 import styles from './styles.module.css';
 
 const RecommendationItem = ({ dish }) => {
@@ -15,19 +16,13 @@ const RecommendationItem = ({ dish }) => {
                 </h3>
                 <div className={styles.textWrapper}>
                     <p className={styles.text}>
-                    {mealType[0]}
-                </p>
+                        {mealType[0]}
+                    </p>
                     <p className={styles.text}>
                         150 UAH
                     </p>
                 </div>
-                <button
-                    className={styles.btn}
-                    onClick={() => { navigate(`/${id}`) }}
-                    style={{ width: 'fit-content' }}
-                >
-                    More details
-                </button>
+                <Button id={id} />
             </div>
         </li>
     );
