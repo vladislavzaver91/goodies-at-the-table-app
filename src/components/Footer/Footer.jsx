@@ -1,3 +1,5 @@
+import { PiCoffee } from "react-icons/pi";
+import { FaInstagram, FaFacebookF, FaTwitter, FaPinterestP } from "react-icons/fa";
 import styles from './styles.module.css';
 
 const Footer = () => {
@@ -5,9 +7,10 @@ const Footer = () => {
         <footer className={styles.footer}>
             <div className={styles.container}>
                 <div className={styles.footerContacts}>
-                    <a href="" className={styles.logo}>
-                        Goodies at the table
-                    </a>
+                    <div className={styles.logo}>
+                        <PiCoffee className={styles.logoIcon} />
+                        <p>Goodies at the table</p>
+                    </div>
                     <address>
                         <ul className={styles.addressList}>
                             <li>
@@ -29,31 +32,23 @@ const Footer = () => {
                     <h2 className={styles.title}>Social media:</h2>
                     <ul className={styles.footerSocList}>
                         <li>
-                            <a href="">
-                                <svg className={styles.footerSocIcon} width="20" height="20">
-                                    <use href="./images/icons.svg#instagram"></use>
-                                </svg>
+                            <a href="" className={styles.footerSocLink}>
+                                <FaInstagram className={styles.footerSocIcon} />
                             </a>
                         </li>
                         <li>
-                            <a href="">
-                                <svg className={styles.footerSocIcon} width="20" height="20">
-                                    <use href="./images/icons.svg#facebook"></use>
-                                </svg>
+                            <a href="" className={styles.footerSocLink}>
+                                <FaFacebookF className={styles.footerSocIcon} />
                             </a>
                         </li>
                         <li>
-                            <a href="">
-                                <svg className={styles.footerSocIcon} width="20" height="20">
-                                    <use href="./images/icons.svg#twitter"></use>
-                                </svg>
+                            <a href="" className={styles.footerSocLink}>
+                                <FaTwitter className={styles.footerSocIcon} />
                             </a>
                         </li>
                         <li>
-                            <a href="">
-                                <svg className={styles.footerSocIcon} width="20" height="20">
-                                    <use href=""></use>
-                                </svg>
+                            <a href="" className={styles.footerSocLink}>
+                                <FaPinterestP className={styles.footerSocIcon} />
                             </a>
                         </li>
                     </ul>
