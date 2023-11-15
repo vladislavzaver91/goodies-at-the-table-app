@@ -1,22 +1,25 @@
-import { MutatingDots } from 'react-loader-spinner';
+import { Hourglass } from 'react-loader-spinner';
+
 import styles from './styles.module.css';
 
 const Loader = () => {
     return (
-    <div className={styles.spinner}>
-        <MutatingDots 
-            height="100"
-            width="100"
-            color="#884619"
-            secondaryColor="#884619"
-            radius='12.5'
-            ariaLabel="mutating-dots-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-        />
-    </div>
+        <div className={styles.backdrop}>
+            <div className={styles.spinner}>
+                <Hourglass
+                    visible={true}
+                    height="80"
+                    width="80"
+                    ariaLabel="hourglass-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    colors={['#884619', '#FFDB63']}
+                />
+            </div>
+        </div>
     );
 };
+
+
 
 export default Loader;

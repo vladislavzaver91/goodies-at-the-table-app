@@ -1,0 +1,24 @@
+.btnWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 41px;
+}
+
+.btn {
+    border: none;
+    border-radius: 22px;
+    padding: 9px 33px;
+
+    color: black;
+    background-color: #FFDB63;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 1.19;
+    cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus {
+    color: #FFE9A1;
+    background-color: #884619;
+}
