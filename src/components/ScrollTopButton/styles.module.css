@@ -1,0 +1,27 @@
+.scrollTopBtn {
+    cursor: pointer;
+    position: fixed;
+    bottom: 80px;
+    right: 60px;
+    font-size: 50px;
+    z-index: 1;
+};
+
+.scrollTopIcon {
+    color: #FFDB63;
+}
+
+.scrollTopIcon:hover,
+.scrollTopIcon:focus {
+    fill: #884619;
+    transition: 0.3s;
+}
+
+.show {
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.hide {
+    opacity: 0;
+}

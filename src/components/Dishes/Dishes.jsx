@@ -6,9 +6,12 @@ import styles from './styles.module.css';
 import DishesFilter from '../DishesFilter/DishesFilter';
 import { useSearch } from '../../contexts/Context.jsx';
 import useFetchData from '../../hooks/useFetch.js';
+import ShowMoreButton from '../ShowMoreButton/ShowMoreButton.jsx';
+import ScrollTopButton from '../ScrollTopButton/ScrollTopButton.jsx';
 
 const Dishes = () => {
-        const [selectedDishType, setSelectedDishType] = useState(null);
+    const [selectedDishType, setSelectedDishType] = useState(null);
+    const [showScrollToTop, setShowScrollToTop] = useState(false);
 
     const {
         isLoading,
@@ -49,25 +52,35 @@ const Dishes = () => {
         }
     }, [searchQuery]);
 
-const ShowMoreData = async () => {
-    if (nextPage) {
-        setIsLoading(true);
-        try {
-            const res = await fetchNextPage(nextPage);
-            const newDishes = res.data.hits.map(item => item.recipe);
-            setData(prevData => [...prevData, ...newDishes]);
-            setIsLastPage(!res.data._links.next);
-            if (res.data._links.next) {
-                setNextPage(res.data._links.next.href);
-            } else {
-                setNextPage(null);
-            }
-        } catch (error) {
-            console.error("Error fetching next page:", error);
-        } finally {
-            setIsLoading(false);
+    useEffect(() => {
+        const handleScroll = () => {
+            window.scrollY > 600 ? setShowScrollToTop(true) : setShowScrollToTop(false);
         }
-    }
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }, []);
+
+    const ShowMoreData = async () => {
+        if (nextPage) {
+            setIsLoading(true);
+            try {
+                const res = await fetchNextPage(nextPage);
+                const newDishes = res.data.hits.map(item => item.recipe);
+                setData(prevData => [...prevData, ...newDishes]);
+                setIsLastPage(!res.data._links.next);
+                if (res.data._links.next) {
+                    setNextPage(res.data._links.next.href);
+                } else {
+                    setNextPage(null);
+                }
+            } catch (error) {
+                console.error("Error fetching next page:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        }
     };
     
     const handleRefresh = () => {
@@ -92,16 +105,9 @@ const ShowMoreData = async () => {
                     />
                     <DishesList dishes={data} />
                     {!isLastPage && nextPage && (
-                        <div className={styles.btnWrapper}>
-                            <button
-                                type='button'
-                                className={styles.btn}
-                                onClick={ShowMoreData}
-                            >
-                                Show more
-                            </button>
-                        </div>
+                        <ShowMoreButton ShowMoreData={ShowMoreData} />
                     )}
+                    <ScrollTopButton show={showScrollToTop} />
                 </div>
             )}
         </section>
