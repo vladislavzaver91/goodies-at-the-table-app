@@ -1,37 +1,53 @@
 import { useState, useEffect } from 'react';
-import { fetchDataByFilter, fetchNextPage } from '../../services/apiEdamam';
+import { fetchNextPage } from '../../services/apiEdamam';
 import Loader from '../Loader/Loader';
 import DishesList from '../DishesList/DishesList';
 import styles from './styles.module.css';
 import DishesFilter from '../DishesFilter/DishesFilter';
+import { useSearch } from '../../contexts/Context.jsx';
+import useFetchData from '../../hooks/useFetch.js';
 
 const Dishes = () => {
-    const [data, setData] = useState([]);
-    const [selectedDishType, setSelectedDishType] = useState(null);
-    const [nextPage, setNextPage] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [isLastPage, setIsLastPage] = useState(false);
+        const [selectedDishType, setSelectedDishType] = useState(null);
+
+    const {
+        isLoading,
+        data,
+        nextPage,
+        isLastPage,
+        setData,
+        setIsLoading,
+        setIsLastPage,
+        setNextPage,
+        fetchDataWithFilter,
+        fetchDataWithoutFilter,
+        fetchDataBySearch,
+    } = useFetchData();
+
+    const { searchQuery, setSearchQuery, setIsFilterApplied } = useSearch();
+
+    console.log(searchQuery);
 
     const dishTypes = ['Desserts', 'Drinks', 'Main course', 'Pancake', 'Sandwiches', 'Biscuits and cookies'];
 
-    const fetchData = async () => {
-        setIsLoading(true);
-        try {
-            const res = await fetchDataByFilter(selectedDishType);
-            const dishes = res.hits.map(item => item.recipe);
-            setNextPage(res._links.next.href);
-            setData(dishes);
-            setIsLastPage(!res._links.next);
-        } catch (error) {
-            console.error("Error fetching data by filter:", error);
-        } finally {
-            setIsLoading(false);
+    useEffect(() => {
+        if (selectedDishType || searchQuery) {
+            fetchDataWithFilter(selectedDishType, searchQuery)
+        } else {
+            fetchDataWithoutFilter();
+            setIsFilterApplied(false);
         }
-    };
+    }, [searchQuery, selectedDishType]);
 
     useEffect(() => {
-        fetchData();
-    }, [selectedDishType]);
+        if (searchQuery) {
+            fetchDataBySearch(searchQuery);
+            setIsFilterApplied(true);
+        } else {
+            fetchDataWithoutFilter();
+            setIsFilterApplied(false);
+        }
+    }, [searchQuery]);
 
 const ShowMoreData = async () => {
     if (nextPage) {
@@ -52,7 +68,14 @@ const ShowMoreData = async () => {
             setIsLoading(false);
         }
     }
-};
+    };
+    
+    const handleRefresh = () => {
+        fetchDataWithoutFilter();
+        setSearchQuery('');
+        setSelectedDishType(null);
+        setIsFilterApplied(false);
+    };
 
     return (
         <section className={styles.section}>
@@ -65,6 +88,7 @@ const ShowMoreData = async () => {
                         dishTypes={dishTypes}
                         selectedDishType={selectedDishType}
                         setSelectedDishType={setSelectedDishType}
+                        onRefresh={handleRefresh}
                     />
                     <DishesList dishes={data} />
                     {!isLastPage && nextPage && (

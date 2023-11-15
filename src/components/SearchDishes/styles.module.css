@@ -1,0 +1,22 @@
+.searchIcon {
+    font-size: 17px;
+    position: absolute;
+    padding-left: 12px;
+    padding-top: 8px;
+    color: #858585;
+}
+
+.input {
+    outline: none;
+    width: 202px;
+    padding: 12px;
+    padding-left: 32px;
+    border: 2px solid #f2f3f5;
+    background-color: #F5F2F2;
+    border-radius: 22px;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.input:focus {
+    border-color: #68a1ec;
+}
