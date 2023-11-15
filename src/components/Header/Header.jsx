@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
-import { FaSearch } from "react-icons/fa";
 import { PiCoffee } from "react-icons/pi";
 import styles from './styles.module.css';
+import SearchDishes from '../SearchDishes/SearchDishes.jsx';
 
-const Header = ({ keywords, setKeywords }) => {
+const Header = () => {
     return (
         <header className={[styles.header, styles.container].join(' ')}>
             <div className={styles.wrapper}>
@@ -30,17 +30,7 @@ const Header = ({ keywords, setKeywords }) => {
                         </li>
                     </ul>
                 </nav>
-                <div className={styles.search}>
-                    <div className={styles.searchIcon}>
-                        <FaSearch />
-                    </div>
-                    <input
-                        type="text"
-                        value={keywords}
-                        onChange={(evt) => setKeywords(evt.target.value)}
-                        placeholder="Search for a dish"
-                        className={styles.input} />
-                </div>
+                <SearchDishes />
             </div>
         </header>
     )
