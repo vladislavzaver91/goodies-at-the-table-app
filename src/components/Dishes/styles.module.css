@@ -5,26 +5,48 @@
 
 .container {
     margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+@media screen and (min-width: 480px) {
+  .container {
+    width: 480px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
     padding-left: 126px;
     padding-right: 126px;
     width: 1188px;
+  }
 }
 
 .title {
-    margin-bottom: 65px;
-
+    margin-bottom: 40px;
     color: black;
     font-weight: bold;
-    font-size: 40px;
-    line-height: 1.17;
+    font-size: 28px;
+    line-height: 1.19;
     text-align: center;
+}
+@media screen and (min-width: 1200px) {
+  .title {
+    margin-bottom: 65px;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 1.17;
+  }
 }
 
 .btn {
     border: none;
     border-radius: 22px;
     padding: 9px 33px;
-
     color: black;
     background-color: #FFDB63;
     font-weight: bold;

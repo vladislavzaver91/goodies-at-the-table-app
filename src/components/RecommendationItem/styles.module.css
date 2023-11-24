@@ -19,7 +19,12 @@
 
 .itemImg {
     width: 100%;
+    height: 370px;
+}
+@media screen and (min-width: 768px) {
+  .itemImg {
     height: 300px;
+  }
 }
 
 .title {

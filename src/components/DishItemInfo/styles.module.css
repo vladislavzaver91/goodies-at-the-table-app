@@ -1,41 +1,88 @@
 .container {
     margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+@media screen and (min-width: 480px) {
+  .container {
+    width: 480px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
     padding-left: 144px;
     padding-right: 144px;
     width: 1152px;
+  }
 }
 
 .contantTitle {
-    max-width: 899px;
+    max-width: 360px;
     margin-left: auto;
     margin-right: auto;
-
     color: white;
     font-weight: bold;
-    font-size: 40px;
-    line-height: 1.36;
+    font-size: 26px;
+    line-height: 1.62;
     text-align: center;
     letter-spacing: 0.06em;
 }
+@media screen and (min-width: 768px) {
+  .contantTitle {
+    max-width: 480px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .contantTitle {
+    max-width: 899px;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 1.36;
+    letter-spacing: 0.06em;
+  }
+}
 
 .contantDetails {
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+@media screen and (min-width: 768px) {
+  .contantDetails {
     padding-top: 48px;
     padding-bottom: 48px;
+  }
 }
 
 .gridWrapper {
     display: grid;
     width: 100%;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 42px;
+    margin-bottom: 20px;
+}
+@media screen and (min-width: 768px) {
+  .gridWrapper {
+    grid-template-columns: 1fr 1fr;
     margin-bottom: 40px;
+  }
 }
 
 .contantDetailsTitle {
-    margin-bottom: 18px;
+    margin-bottom: 14px;
     color: black;
     font-weight: bold;
+    font-size: 18px;
+}
+@media screen and (min-width: 768px) {
+  .contantDetailsTitle {
+    margin-bottom: 18px;
     font-size: 26px;
+  }
 }
 
 .ingredientsListItem {
@@ -52,16 +99,28 @@
 
 .text {
     color: black;
+    font-size: 18px;
+    line-height: 1.17;
+}
+@media screen and (min-width: 768px) {
+  .text {
     font-size: 24px;
     line-height: 1.19;
+  }
 }
+
 
 .mealDetails .text {
     margin-bottom: 24px;
 }
 
 .mealDetails .contantDetailsTitle {
+    margin-right: 10px;
+}
+@media screen and (min-width: 768px) {
+  .mealDetails .contantDetailsTitle {
     margin-right: 20px;
+  }
 }
 
 .additionalInfoWrapper {

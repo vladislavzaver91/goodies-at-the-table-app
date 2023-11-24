@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import Button from '../Button/Button';
 import styles from './styles.module.css';
+import DishItemButton from '../Buttons/DishItemButton/DishItemButton';
 
 const DishItem = ({ dish }) => {
     const navigate = useNavigate();
@@ -9,7 +9,7 @@ const DishItem = ({ dish }) => {
 
     return (
         <li className={styles.item}>
-            <img src={image} alt={label} width={300} height={300} />
+            <img src={image} alt={label} className={styles.itemImg} />
             <div className={styles.wrapper}>
                 <h3 className={styles.titleItem}>
                     {label}
@@ -22,7 +22,7 @@ const DishItem = ({ dish }) => {
                         150 UAH
                     </p>
                 </div>
-                <Button id={id}/>
+                    <DishItemButton id={id} />
             </div>
         </li>
     );
