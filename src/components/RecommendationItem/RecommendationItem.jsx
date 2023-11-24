@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import Button from '../Button/Button';
+import TopDishesButton from '../Buttons/TopDishesButton/TopDishesButton';
 import styles from './styles.module.css';
 
 const RecommendationItem = ({ dish }) => {
@@ -22,7 +22,7 @@ const RecommendationItem = ({ dish }) => {
                         150 UAH
                     </p>
                 </div>
-                <Button id={id} />
+                <TopDishesButton id={id} />
             </div>
         </li>
     );

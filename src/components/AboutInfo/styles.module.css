@@ -1,19 +1,47 @@
 .section {
+    padding-top: 45px;
+    padding-bottom: 45px;
+}
+@media screen and (min-width: 768px) {
+  .section {
     padding-top: 75px;
     padding-bottom: 75px;
+  }
 }
 
 .container {
     margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+@media screen and (min-width: 480px) {
+  .container {
+    width: 480px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
     padding-left: 144px;
     padding-right: 144px;
     width: 1152px;
+  }
 }
 
 .text {
     color: black;
+    font-size: 20px;
+    line-height: 1.17;
+}
+@media screen and (min-width: 768px) {
+  .text {
     font-size: 30px;
     line-height: 1.19;
+  }
 }
 
 .text:not(:last-child) {

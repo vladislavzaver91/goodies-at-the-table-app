@@ -6,8 +6,8 @@ import styles from './styles.module.css';
 import DishesFilter from '../DishesFilter/DishesFilter';
 import { useSearch } from '../../contexts/Context.jsx';
 import useFetchData from '../../hooks/useFetch.js';
-import ShowMoreButton from '../ShowMoreButton/ShowMoreButton.jsx';
-import ScrollTopButton from '../ScrollTopButton/ScrollTopButton.jsx';
+import ShowMoreButton from '../Buttons/ShowMoreButton/ShowMoreButton.jsx';
+import ScrollTopButton from '../Buttons/ScrollTopButton/ScrollTopButton.jsx';
 
 const Dishes = () => {
     const [selectedDishType, setSelectedDishType] = useState(null);

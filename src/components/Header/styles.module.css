@@ -9,33 +9,85 @@
 }
 
 .logoIcon {
-    font-size: 28px;
+    font-size: 22px;
     color: black;
+}
+@media screen and (min-width: 1200px) {
+  .logoIcon  {
+    font-size: 28px;
+  }
 }
 
 .logo h1 {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.19;
+    color: black;
+}
+@media screen and (min-width: 768px) {
+  .logo h1 {
+    margin-left: 8px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .logo h1 {
     margin-left: 13px;
     font-size: 26px;
     font-weight: 400;
+    line-height: 1.17;
+  }
 }
 
 .container {
     margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+@media screen and (min-width: 480px) {
+  .container {
+    width: 480px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
     padding-left: 77px;
     padding-right: 77px;
-    width: 1286px;
+    width: 1200px;
+  }
 }
 
-.wrapper {
+@media screen and (max-width: 767px) {
+  .wrapper {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .wrapper {
     display: flex;
+    justify-content: space-around;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .wrapper {
     justify-content: space-between;
+  }
 }
 
 .navigationLink {
     color: black;
     font-weight: bold;
-    font-size: 26px;
+    font-size: 20px;
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media screen and (min-width: 1200px) {
+  .navigationLink {
+    font-size: 26px;
+  }
 }
 
 .navigationLink:focus,
@@ -48,5 +100,10 @@
 }
 
 .navigation li + li {
+    margin-left: 26px;
+}
+@media screen and (min-width: 1200px) {
+  .navigation li + li {
     margin-left: 46px;
+  }
 }

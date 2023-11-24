@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styles from './styles.module.css';
 
-const Button = ({id}) => {
+const TopDishesButton = ({id}) => {
     const navigate = useNavigate();
 
     return (
@@ -15,4 +15,4 @@ const Button = ({id}) => {
     )
 };
 
-export default Button;
+export default TopDishesButton;
