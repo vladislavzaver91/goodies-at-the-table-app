@@ -23,7 +23,7 @@
   .container {
     padding-left: 77px;
     padding-right: 77px;
-    width: 1200px;
+    width: 1046px;
   }
 }
 
@@ -53,11 +53,7 @@
     margin-bottom: 42px;
   }
 }
-@media screen and (min-width: 768px) {
-  .footerContacts {
-    text-align: center;
-  }
-}
+
 
 .logo {
     display: flex;
@@ -139,11 +135,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-@media screen and (min-width: 1200px) {
-  .footerSoc {
-    margin-left: 270px;
-  }
 }
 
 .title {
