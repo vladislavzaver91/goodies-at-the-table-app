@@ -17,8 +17,7 @@
 }
 
 .item,
-.active, 
-.refreshBtn {
+.active {
     display: flex;
     align-items: center;
     padding: 8px 16px;
@@ -26,9 +25,31 @@
     border-radius: 32px;
     background-color: #F5F2F2;
     color: black;
+    font-size: 16px;
+    line-height: 1.17;
+    cursor: pointer;
+}
+
+.refreshBtn {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 32px;
+    background-color: #FFDB63;
+    color: black;
+    font-size: 16px;
+    line-height: 1.17;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1200px) {
+  .item,
+  .active, 
+  .refreshBtn {
     font-size: 20px;
     line-height: 1.19;
-    cursor: pointer;
+  }
 }
 
 .active {

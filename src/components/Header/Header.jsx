@@ -2,8 +2,17 @@ import { NavLink } from 'react-router-dom';
 import { PiCoffee } from "react-icons/pi";
 import styles from './styles.module.css';
 import SearchDishes from '../SearchDishes/SearchDishes.jsx';
+import { useState } from 'react';
+import { HiOutlineMenu } from "react-icons/hi";
+import { IoClose } from "react-icons/io5";
 
 const Header = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const closeMenu = () => {
+        setIsOpen(false);
+    }
+
     return (
         <header className={[styles.header, styles.container].join(' ')}>
             <div className={styles.wrapper}>
@@ -11,26 +20,36 @@ const Header = () => {
                     <PiCoffee className={styles.logoIcon} />
                     <h1>Goodies at the table</h1>
                 </div>
-                <nav className={styles.navigation}>
+                <nav className={`${styles.navigation} ${isOpen ? styles.active : ""}`}>
                     <ul>
                         <li>
-                            <NavLink to="/" end className={styles.navigationLink}>
+                            <NavLink to="/" end className={styles.navigationLink} onClick={closeMenu}>
                                 Home
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to='dishes' className={styles.navigationLink}>
+                            <NavLink to='dishes' className={styles.navigationLink} onClick={closeMenu}>
                                 Dishes
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to='about_us' className={styles.navigationLink}>
+                            <NavLink to='about_us' className={styles.navigationLink} onClick={closeMenu}>
                                 About us
                             </NavLink>
                         </li>
                     </ul>
+                    <SearchDishes closeMenu={closeMenu} />
                 </nav>
-                <SearchDishes />
+                <button
+                className={styles.headerMenuBtn}
+                onClick={() => setIsOpen(!isOpen)}
+                >
+                    {isOpen ? (
+                        <IoClose className={styles.headerMenuIcon} />
+                    ) : (
+                        <HiOutlineMenu className={styles.headerMenuIcon} />
+                    )}
+            </button>
             </div>
         </header>
     )

@@ -16,7 +16,7 @@ const ScrollTopButton = ({ show }) => {
         >
             <FaArrowCircleUp
                 className={styles.scrollTopIcon}
-                style={{ color: '#FFDB63' }}
+                style={{ color: '#884619' }}
             />
         </div>
     )
