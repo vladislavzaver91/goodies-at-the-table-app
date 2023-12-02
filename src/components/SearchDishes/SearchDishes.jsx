@@ -4,7 +4,7 @@ import { FaSearch } from "react-icons/fa";
 import { useSearch } from '../../contexts/Context.jsx';
 import styles from './styles.module.css';
 
-const SearchDishes = () => {
+const SearchDishes = ({closeMenu}) => {
     const [keywords, setKeywords] = useState('');
     const { setSearchQuery } = useSearch();
     const navigate = useNavigate();
@@ -14,6 +14,7 @@ const SearchDishes = () => {
             evt.preventDefault();
             setSearchQuery(keywords);
             setKeywords('');
+            closeMenu();
             navigate('/dishes');
         }
     };

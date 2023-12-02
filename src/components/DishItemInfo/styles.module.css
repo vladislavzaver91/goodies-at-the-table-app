@@ -15,9 +15,9 @@
 }
 @media screen and (min-width: 1200px) {
   .container {
-    padding-left: 144px;
-    padding-right: 144px;
-    width: 1152px;
+    padding-left: 94px;
+    padding-right: 94px;
+    width: 1012px;
   }
 }
 
@@ -78,7 +78,7 @@
     font-weight: bold;
     font-size: 18px;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   .contantDetailsTitle {
     margin-bottom: 18px;
     font-size: 26px;
@@ -102,7 +102,7 @@
     font-size: 18px;
     line-height: 1.17;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   .text {
     font-size: 24px;
     line-height: 1.19;
