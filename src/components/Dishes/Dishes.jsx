@@ -8,16 +8,18 @@ import { useSearch } from '../../contexts/Context.jsx';
 import useFetchData from '../../hooks/useFetch.js';
 import ShowMoreButton from '../Buttons/ShowMoreButton/ShowMoreButton.jsx';
 import ScrollTopButton from '../Buttons/ScrollTopButton/ScrollTopButton.jsx';
+import NotFoundBySearchError from '../NotFoundBySearchError/NotFoundBySearchError.jsx';
 
 const Dishes = () => {
     const [selectedDishType, setSelectedDishType] = useState(null);
     const [showScrollToTop, setShowScrollToTop] = useState(false);
-
     const {
         isLoading,
         data,
         nextPage,
         isLastPage,
+        noResults,
+        error,
         setData,
         setIsLoading,
         setIsLastPage,
@@ -28,9 +30,6 @@ const Dishes = () => {
     } = useFetchData();
 
     const { searchQuery, setSearchQuery, setIsFilterApplied } = useSearch();
-
-    console.log(searchQuery);
-
     const dishTypes = ['Desserts', 'Drinks', 'Main course', 'Pancake', 'Sandwiches', 'Biscuits and cookies'];
 
     useEffect(() => {
@@ -94,20 +93,26 @@ const Dishes = () => {
         <section className={styles.section}>
             {isLoading ? <Loader /> : (
                 <div className={styles.container}>
-                    <h2 className={styles.title}>
-                        Our dishes
-                    </h2>
-                    <DishesFilter
-                        dishTypes={dishTypes}
-                        selectedDishType={selectedDishType}
-                        setSelectedDishType={setSelectedDishType}
-                        onRefresh={handleRefresh}
-                    />
-                    <DishesList dishes={data} />
-                    {!isLastPage && nextPage && (
-                        <ShowMoreButton ShowMoreData={ShowMoreData} />
+                    {noResults && error ? (
+                        <NotFoundBySearchError onRefresh={handleRefresh} />
+                    ) : (
+                        <>
+                            <h2 className={styles.title}>
+                                Our dishes
+                            </h2>
+                            <DishesFilter
+                                dishTypes={dishTypes}
+                                selectedDishType={selectedDishType}
+                                setSelectedDishType={setSelectedDishType}
+                                onRefresh={handleRefresh}
+                            />
+                            <DishesList dishes={data} />
+                            {!isLastPage && nextPage && (
+                                <ShowMoreButton ShowMoreData={ShowMoreData} />
+                            )}
+                            <ScrollTopButton show={showScrollToTop} />
+                        </>
                     )}
-                    <ScrollTopButton show={showScrollToTop} />
                 </div>
             )}
         </section>

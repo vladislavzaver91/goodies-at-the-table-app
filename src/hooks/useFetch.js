@@ -6,18 +6,26 @@ const useFetchData = () => {
     const [nextPage, setNextPage] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [isLastPage, setIsLastPage] = useState(false);
+    const [error, setError] = useState(false);
+    const [noResults, setNoResults] = useState(false);
 
     const fetchDataWithFilter = async (selectedDishType, searchQuery) => {
         setIsLoading(true);
         try {
-            console.log("Fetching data for Dish Type:", selectedDishType);
             const res = await fetchDataByFilter(selectedDishType, searchQuery);
             const dishes = res.hits.map(item => item.recipe);
+
+            if (dishes.length === 0) {
+                setNoResults(true);
+            } else {
+                setNoResults(false);
+            }
+
             setNextPage(res._links.next.href);
             setData(dishes);
             setIsLastPage(!res._links.next);
         } catch (error) {
-            console.error("Error fetching data by filter:", error);
+            setError(error);
         } finally {
             setIsLoading(false);
         }
@@ -26,14 +34,20 @@ const useFetchData = () => {
     const fetchDataWithoutFilter = async (searchQuery) => {
         setIsLoading(true);
         try {
-            console.log("Fetching data without Dish Type filter");
             const res = await fetchData(searchQuery);
             const dishes = res.hits.map(item => item.recipe);
+
+            if (dishes.length === 0) {
+                setNoResults(true);
+            } else {
+                setNoResults(false);
+            }
+
             setNextPage(res._links.next.href);
             setData(dishes);
             setIsLastPage(!res._links.next);
         } catch (error) {
-            console.error("Error fetching data without filter:", error);
+            setError(error);
         } finally {
             setIsLoading(false);
         }
@@ -43,16 +57,22 @@ const useFetchData = () => {
         setIsLoading(true);
         try {
             if (searchQuery) {
-                console.log("Fetching data without Dish Type filter");
                 const res = await fetchSearchData(searchQuery);
                 const dishes = res.hits.map(item => item.recipe);
+
+                if (dishes.length === 0) {
+                    setNoResults(true);
+                } else {
+                    setNoResults(false);
+                }
+
                 setNextPage(res._links.next.href);
                 setData(dishes);
                 setIsLastPage(!res._links.next);
             }
             
         } catch (error) {
-            console.error("Error fetching data without filter:", error);
+            setError(error);
         } finally {
             setIsLoading(false);
         }
@@ -63,6 +83,8 @@ const useFetchData = () => {
         data,
         nextPage,
         isLastPage,
+        noResults,
+        error,
         setData,
         setIsLoading,
         setIsLastPage,

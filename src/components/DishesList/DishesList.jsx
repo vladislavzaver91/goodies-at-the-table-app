@@ -1,8 +1,9 @@
 import DishItem from '../DishItem/DishItem';
+import styles from './styles.module.css'
 
 const DishesList = ({ dishes }) => {
     return (
-        <ul>
+        <ul className={styles.dishList}>
             {dishes.map((recipe, index) => (
                 <DishItem dish={recipe} key={index} />
             ))
