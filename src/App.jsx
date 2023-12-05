@@ -4,6 +4,7 @@ import DishesPage from './pages/DishesPage/DishesPage';
 import AboutPage from "./pages/AboutPage/AboutPage";
 import Layout from "./components/Layout/Layout";
 import DishItemPage from "./pages/DishItemPage/DishItemPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="dishes" element={<DishesPage />} />
           <Route path="/:dishId" element={<DishItemPage />} />
           <Route path="about_us" element={<AboutPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </>
