@@ -22,7 +22,7 @@ const DishItem = ({ dish }) => {
                         150 UAH
                     </p>
                 </div>
-                    <DishItemButton id={id} />
+                <DishItemButton id={id} />
             </div>
         </li>
     );
