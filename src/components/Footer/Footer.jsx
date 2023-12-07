@@ -32,28 +32,29 @@ const Footer = () => {
                     <h2 className={styles.title}>Social media:</h2>
                     <ul className={styles.footerSocList}>
                         <li>
-                            <a href="" className={styles.footerSocLink}>
+                            <a href="https://www.instagram.com/" className={styles.footerSocLink}>
                                 <FaInstagram className={styles.footerSocIcon} />
                             </a>
                         </li>
                         <li>
-                            <a href="" className={styles.footerSocLink}>
+                            <a href="https://www.facebook.com/" className={styles.footerSocLink}>
                                 <FaFacebookF className={styles.footerSocIcon} />
                             </a>
                         </li>
                         <li>
-                            <a href="" className={styles.footerSocLink}>
+                            <a href="https://twitter.com/" className={styles.footerSocLink}>
                                 <FaTwitter className={styles.footerSocIcon} />
                             </a>
                         </li>
                         <li>
-                            <a href="" className={styles.footerSocLink}>
+                            <a href="https://www.pinterest.com/" className={styles.footerSocLink}>
                                 <FaPinterestP className={styles.footerSocIcon} />
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
+            <p className={styles.signature}>VladZaver2023&#169;</p>
         </footer>
     )
 };
