@@ -1,11 +1,10 @@
-import { useNavigate } from 'react-router-dom';
 import styles from './styles.module.css';
 import DishItemButton from '../Buttons/DishItemButton/DishItemButton';
 
 const DishItem = ({ dish }) => {
-    const navigate = useNavigate();
     const { image, mealType, label, uri } = dish;
     const id = uri.split('#')[1];
+    const capitalizedMealType = mealType[0].charAt(0).toUpperCase() + mealType[0].slice(1);
 
     return (
         <li className={styles.item}>
@@ -16,7 +15,7 @@ const DishItem = ({ dish }) => {
                 </h3>
                 <div className={styles.textWrapper}>
                     <p className={styles.text}>
-                        {`${mealType[0]}`}
+                        {capitalizedMealType}
                     </p>
                     <p className={styles.price}>
                         150 UAH

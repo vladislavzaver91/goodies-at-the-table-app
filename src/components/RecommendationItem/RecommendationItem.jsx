@@ -6,6 +6,7 @@ const RecommendationItem = ({ dish }) => {
     const navigate = useNavigate();
     const { image, mealType, label, uri } = dish;
     const id = uri.split('#')[1];
+    const capitalizedMealType = mealType[0].charAt(0).toUpperCase() + mealType[0].slice(1);
 
     return (
         <li className={styles.item}>
@@ -16,7 +17,7 @@ const RecommendationItem = ({ dish }) => {
                 </h3>
                 <div className={styles.textWrapper}>
                     <p className={styles.text}>
-                        {mealType[0]}
+                        {capitalizedMealType}
                     </p>
                     <p className={styles.text}>
                         150 UAH
