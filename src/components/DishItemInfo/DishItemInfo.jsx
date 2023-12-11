@@ -6,7 +6,7 @@ import styles from './styles.module.css';
 const DishItemInfo = () => {
     const [item, setItem] = useState();
     const { dishId } = useParams();
-
+    
     useEffect(() => {
         if (dishId !== '') {
             fetchById(dishId).then((res) => {
@@ -56,7 +56,7 @@ const DishItemInfo = () => {
                                             {item.ingredients.map(({ food, foodId, image }) => (
                                                 <li key={foodId} className={styles.ingredientsListItem}>
                                                     <img src={image} alt={food} width={100} height={100} />
-                                                    <p className={styles.text}>{food}</p>
+                                                    <p className={styles.text}>{food.charAt(0).toUpperCase() + food.slice(1)}</p>
                                                 </li>
                                             ))}
                                         </ul>
@@ -68,15 +68,15 @@ const DishItemInfo = () => {
                                         </p>
                                         <p className={styles.text}>
                                             <span className={styles.contantDetailsTitle}>Cuisine:</span>
-                                            {item.cuisineType} food
+                                            {String(item.cuisineType).charAt(0).toUpperCase() + String(item.cuisineType).slice(1)} food
                                         </p>
                                         <p className={styles.text}>
                                             <span className={styles.contantDetailsTitle}>Mealtime:</span>
-                                            {item.mealType[0]}
+                                            {item.mealType[0].charAt(0).toUpperCase() + item.mealType[0].slice(1)}
                                         </p>
                                         <p className={styles.text}>
                                             <span className={styles.contantDetailsTitle}>Dish:</span>
-                                            {item.dishType}
+                                            {String(item.dishType).charAt(0).toUpperCase() + String(item.dishType).slice(1)}
                                         </p>
                                     </div>
                                 </div>

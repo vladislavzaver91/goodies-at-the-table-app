@@ -1,6 +1,6 @@
 .footer {
     padding-top: 85px;
-    padding-bottom: 85px;
+    padding-bottom: 43px;
     background-color: #FFDB63;
 }
 
@@ -184,4 +184,13 @@
 
 .footerSocIcon {
     font-size: 24px;
+}
+
+.signature {
+  text-align: center;
+  padding-top: 43px;
+  font-size: 14px; 
+  font-weight: 500; 
+  line-height: 1.36; 
+  color: #884619;
 }

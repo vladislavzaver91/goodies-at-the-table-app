@@ -2,12 +2,23 @@ import { NavLink } from 'react-router-dom';
 import { PiCoffee } from "react-icons/pi";
 import styles from './styles.module.css';
 import SearchDishes from '../SearchDishes/SearchDishes.jsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HiOutlineMenu } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.classList.add('modal-open');
+        } else {
+            document.body.classList.remove('modal-open');
+        }
+        return () => {
+            document.body.classList.remove('modal-open');
+        };
+    }, [isOpen]);
 
     const closeMenu = () => {
         setIsOpen(false);
