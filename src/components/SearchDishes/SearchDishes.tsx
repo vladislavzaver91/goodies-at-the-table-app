@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaSearch } from "react-icons/fa";
-import { useSearch } from '../../contexts/Context.jsx';
+import { useSearch } from '../../contexts/Context.tsx';
 import styles from './styles.module.css';
 
-const SearchDishes = ({closeMenu}) => {
-    const [keywords, setKeywords] = useState('');
+interface Props {
+    closeMenu: () => void;
+}
+
+const SearchDishes = ({ closeMenu }: Props) => {
+    const [keywords, setKeywords] = useState<string>('');
     const { setSearchQuery } = useSearch();
     const navigate = useNavigate();
 
-    const handleKeyDown = evt => {
+    const handleKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
         if (evt.key === 'Enter') {
             evt.preventDefault();
             setSearchQuery(keywords);

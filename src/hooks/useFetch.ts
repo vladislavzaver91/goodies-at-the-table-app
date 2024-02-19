@@ -1,18 +1,20 @@
 import { useState } from "react";
 import { fetchData, fetchSearchData, fetchDataByFilter } from "../services/apiEdamam";
+import { IDishes, IFetchData } from "../interfaces";
 
-const useFetchData = () => {
-    const [data, setData] = useState([]);
-    const [nextPage, setNextPage] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [isLastPage, setIsLastPage] = useState(false);
-    const [error, setError] = useState(false);
-    const [noResults, setNoResults] = useState(false);
+const useFetchData = (): IFetchData => {
+    const [data, setData] = useState<IDishes[]>([]);
+    const [nextPage, setNextPage] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [isLastPage, setIsLastPage] = useState<boolean>(false);
+    const [error, setError] = useState<Error | null>(null);
+    const [noResults, setNoResults] = useState<boolean>(false);
 
-    const fetchDataWithFilter = async (selectedDishType, searchQuery) => {
+    const fetchDataWithFilter = async (selectedDishType: string, searchQuery: string): Promise<void> => {
         setIsLoading(true);
         try {
             const res = await fetchDataByFilter(selectedDishType, searchQuery);
+            console.log(res);
             const dishes = res.hits.map(item => item.recipe);
 
             if (dishes.length === 0) {
@@ -24,14 +26,20 @@ const useFetchData = () => {
             setNextPage(res._links.next.href);
             setData(dishes);
             setIsLastPage(!res._links.next);
-        } catch (error) {
-            setError(error);
+        } catch (error: unknown) {
+
+            if (error instanceof Error) {
+                setError(error);
+            } else {
+                setError(null)
+            }
+            
         } finally {
             setIsLoading(false);
         }
     };
 
-    const fetchDataWithoutFilter = async (searchQuery) => {
+    const fetchDataWithoutFilter = async (searchQuery?: string): Promise<void> => {
         setIsLoading(true);
         try {
             const res = await fetchData(searchQuery);
@@ -46,14 +54,20 @@ const useFetchData = () => {
             setNextPage(res._links.next.href);
             setData(dishes);
             setIsLastPage(!res._links.next);
-        } catch (error) {
-            setError(error);
+        } catch (error: unknown) {
+            
+            if (error instanceof Error) {
+                setError(error);
+            } else {
+                setError(null)
+            }
+            
         } finally {
             setIsLoading(false);
         }
     };
 
-    const fetchDataBySearch = async (searchQuery) => {
+    const fetchDataBySearch = async (searchQuery: string) => {
         setIsLoading(true);
         try {
             if (searchQuery) {
@@ -71,8 +85,14 @@ const useFetchData = () => {
                 setIsLastPage(!res._links.next);
             }
             
-        } catch (error) {
-            setError(error);
+        } catch (error: unknown) {
+            
+            if (error instanceof Error) {
+                setError(error);
+            } else {
+                setError(null)
+            }
+            
         } finally {
             setIsLoading(false);
         }

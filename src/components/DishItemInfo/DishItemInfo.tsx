@@ -2,14 +2,16 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchById } from '../../services/apiEdamam';
 import styles from './styles.module.css';
+import { IDishes } from '../../interfaces';
 
 const DishItemInfo = () => {
-    const [item, setItem] = useState();
+    const [item, setItem] = useState<IDishes>();
     const { dishId } = useParams();
     
     useEffect(() => {
         if (dishId !== '') {
             fetchById(dishId).then((res) => {
+                console.log(res);
                 setItem(res.recipe);
                 console.log(res.recipe);
             })

@@ -1,7 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import styles from './styles.module.css';
 
-const DishItemButton = ({id}) => {
+interface Props {
+    id?: string;
+}
+
+const TopDishesButton = ({id}: Props) => {
     const navigate = useNavigate();
 
     return (
@@ -15,4 +19,4 @@ const DishItemButton = ({id}) => {
     )
 };
 
-export default DishItemButton;
+export default TopDishesButton;

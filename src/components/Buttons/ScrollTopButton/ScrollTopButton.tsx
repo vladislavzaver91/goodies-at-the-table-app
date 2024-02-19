@@ -1,8 +1,12 @@
 import { FaArrowCircleUp } from "react-icons/fa";
 import styles from './styles.module.css';
 
-const ScrollTopButton = ({ show }) => {
-    const scrollToTop = () => {
+interface Props {
+    show: boolean;
+}
+
+const ScrollTopButton = ({ show }: Props) => {
+    const scrollToTop = (): void => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth',

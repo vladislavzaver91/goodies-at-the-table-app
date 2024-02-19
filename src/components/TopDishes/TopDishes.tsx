@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import RecommendationList from '../RecommendationList/RecommendationList';
-import { fetchRandomData } from '../../services/apiEdamam';
+import RecommendationList from '../RecommendationList/RecommendationList.tsx';
+import { fetchRandomData } from '../../services/apiEdamam.ts';
 import styles from './styles.module.css';
-import useFetchData from '../../hooks/useFetch.js';
-import Loader from '../Loader/Loader';
+import useFetchData from '../../hooks/useFetch.ts';
+import Loader from '../Loader/Loader.tsx';
+import { IDishes } from '../../interfaces/index.ts';
 
 const TopDishes = () => {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<IDishes[]>([]);
     const { isLoading, setIsLoading } = useFetchData();
 
     useEffect(() => {
@@ -15,6 +16,7 @@ const TopDishes = () => {
                 setIsLoading(true);
                 const res = await fetchRandomData();
                 const dishes = res.hits.map(item => item.recipe);
+                console.log(dishes);
                 setData(dishes);
             } catch (error) {
                 console.error("Error fetching data:", error);
