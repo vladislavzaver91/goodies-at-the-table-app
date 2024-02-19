@@ -1,7 +1,11 @@
 import { IoRefresh } from "react-icons/io5";
 import styles from './styles.module.css';
 
-const NotFoundBySearchError = ({ onRefresh }) => {
+interface Props {
+    onRefresh: () => void;
+}
+
+const NotFoundBySearchError = ({ onRefresh }: Props) => {
     return (
             <div className={styles.container}>
                 <h2 className={styles.title}>Oops! Not found</h2>

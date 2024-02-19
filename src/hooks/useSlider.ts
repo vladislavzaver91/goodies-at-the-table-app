@@ -1,7 +1,15 @@
-import { useRef } from "react";
+import { useRef, RefObject } from "react";
+import Slider, { Settings } from "react-slick";
 
-export const useSlider = (initialSliderToShow = 3) => {
-    const slider = useRef(null);
+export interface ISliderHooks {
+    sliderSettings: Settings;
+    slider: RefObject<Slider>;
+    slideToPrev: () => void;
+    slideToNext: () => void;
+}
+
+export const useSlider = (initialSliderToShow = 3): ISliderHooks => {
+    const slider = useRef<Slider>(null);
 
     const sliderSettings = {
         arrows: false,
@@ -29,11 +37,15 @@ export const useSlider = (initialSliderToShow = 3) => {
     };
 
     const slideToPrev = () => {
-        slider.current.slickPrev();
+        if (slider.current && slider.current.slickPrev) {
+            slider.current.slickPrev();
+        }
     };
 
     const slideToNext = () => {
-        slider.current.slickNext();
+        if (slider.current && slider.current.slickNext) {
+            slider.current.slickNext();
+        }
     };
 
     return { sliderSettings, slider, slideToPrev, slideToNext };

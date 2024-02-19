@@ -1,4 +1,3 @@
-import React, { useRef } from 'react';
 import Slider from 'react-slick';
 import RecommendationItem from '../RecommendationItem/RecommendationItem';
 import styles from './styles.module.css';
@@ -6,8 +5,13 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { useSlider } from '../../hooks/useSlider';
+import { IDishes } from '../../interfaces';
 
-const RecommendationList = ({ dishes }) => {
+interface Props {
+    dishes: IDishes[];
+}
+
+const RecommendationList = ({ dishes }: Props) => {
     const { sliderSettings, slider, slideToPrev, slideToNext } = useSlider();
 
     return (

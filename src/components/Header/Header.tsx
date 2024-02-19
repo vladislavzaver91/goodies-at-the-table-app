@@ -7,7 +7,7 @@ import { HiOutlineMenu } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 
 const Header = () => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
 
     useEffect(() => {
         if (isOpen) {
@@ -20,7 +20,7 @@ const Header = () => {
         };
     }, [isOpen]);
 
-    const closeMenu = () => {
+    const closeMenu = (): void => {
         setIsOpen(false);
     }
 

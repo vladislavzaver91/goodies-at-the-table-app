@@ -1,12 +1,16 @@
 import styles from './styles.module.css';
 
-const ShowMoreButton = ({ ShowMoreData }) => {
+interface Props {
+    showMoreData: () => void;
+}
+
+const ShowMoreButton = ({ showMoreData }: Props) => {
     return (
         <div className={styles.btnWrapper}>
             <button
                 type='button'
                 className={styles.btn}
-                onClick={() => ShowMoreData()}
+                onClick={() => showMoreData()}
             >
                 Show more
             </button>

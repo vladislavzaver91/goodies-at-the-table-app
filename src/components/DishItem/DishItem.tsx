@@ -1,32 +1,35 @@
-import { useNavigate } from 'react-router-dom';
-import TopDishesButton from '../Buttons/TopDishesButton/TopDishesButton';
 import styles from './styles.module.css';
+import DishItemButton from '../Buttons/DishItemButton/DishItemButton';
+import { IDishes } from '../../interfaces';
 
-const RecommendationItem = ({ dish }) => {
-    const navigate = useNavigate();
+interface Props {
+    dish: IDishes;
+}
+
+const DishItem = ({ dish }: Props) => {
     const { image, mealType, label, uri } = dish;
-    const id = uri.split('#')[1];
+    const id = uri?.split('#')[1];
     const capitalizedMealType = mealType[0].charAt(0).toUpperCase() + mealType[0].slice(1);
 
     return (
         <li className={styles.item}>
             <img src={image} alt={label} className={styles.itemImg} />
             <div className={styles.wrapper}>
-                <h3 className={styles.title}>
+                <h3 className={styles.titleItem}>
                     {label}
                 </h3>
                 <div className={styles.textWrapper}>
                     <p className={styles.text}>
                         {capitalizedMealType}
                     </p>
-                    <p className={styles.text}>
+                    <p className={styles.price}>
                         150 UAH
                     </p>
                 </div>
-                <TopDishesButton id={id} />
+                <DishItemButton id={id} />
             </div>
         </li>
     );
 };
 
-export default RecommendationItem;
+export default DishItem;
