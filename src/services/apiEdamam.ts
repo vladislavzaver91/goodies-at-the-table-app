@@ -1,31 +1,14 @@
 import axios from "axios";
+import { IDataApi, IDishInfo, IDishesApiResponse } from "../interfaces";
 
 const APP_ID = import.meta.env.VITE_CAFE_APP_API_ID
 const APP_KEY = import.meta.env.VITE_CAFE_APP_API_KEY
 const BASE_URL = import.meta.env.VITE_CAFE_APP_BASE_API_URL
 
 
-export const fetchData = async () => {
+export const fetchData = async (searchQuery?: string): Promise<IDishesApiResponse> => {
     try {
-        const res = await axios.get(`${BASE_URL}?mealType=Breakfast&mealType=Teatime&dishType=Biscuits%20and%20cookies&dishType=Desserts&dishType=Drinks&dishType=Main%20course&dishType=Pancake&dishType=Sandwiches&`, {
-            params: {
-                app_key: APP_KEY,
-                app_id: APP_ID,
-                health: "alcohol-free",
-                type: "public",
-                imageSize: 'REGULAR',
-            },
-        })
-        return res.data;
-    } catch (error) {
-        console.error("Error fetching data:", error);
-        throw error;
-    }
-};
-
-export const fetchSearchData = async (searchQuery) => {
-    try {
-        const res = await axios.get(`${BASE_URL}?mealType=Breakfast&mealType=Teatime&dishType=Biscuits%20and%20cookies&dishType=Desserts&dishType=Drinks&dishType=Main%20course&dishType=Pancake&dishType=Sandwiches&`, {
+        const res = await axios.get<IDishesApiResponse>(`${BASE_URL}?mealType=Breakfast&mealType=Teatime&dishType=Biscuits%20and%20cookies&dishType=Desserts&dishType=Drinks&dishType=Main%20course&dishType=Pancake&dishType=Sandwiches&`, {
             params: {
                 app_key: APP_KEY,
                 app_id: APP_ID,
@@ -42,9 +25,28 @@ export const fetchSearchData = async (searchQuery) => {
     }
 };
 
-export const fetchDataByFilter = async (dishType, searchQuery) => {
+export const fetchSearchData = async (searchQuery: string): Promise<IDishesApiResponse> => {
     try {
-        const res = await axios.get(`${BASE_URL}?mealType=Breakfast&mealType=Teatime`, {
+        const res = await axios.get<IDishesApiResponse>(`${BASE_URL}?mealType=Breakfast&mealType=Teatime&dishType=Biscuits%20and%20cookies&dishType=Desserts&dishType=Drinks&dishType=Main%20course&dishType=Pancake&dishType=Sandwiches&`, {
+            params: {
+                app_key: APP_KEY,
+                app_id: APP_ID,
+                health: "alcohol-free",
+                type: "public",
+                imageSize: 'REGULAR',
+                q: searchQuery,
+            },
+        })
+        return res.data;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        throw error;
+    }
+};
+
+export const fetchDataByFilter = async (dishType: string, searchQuery: string): Promise<IDishesApiResponse> => {
+    try {
+        const res = await axios.get<IDishesApiResponse>(`${BASE_URL}?mealType=Breakfast&mealType=Teatime`, {
             params: {
                 app_key: APP_KEY,
                 app_id: APP_ID,
@@ -62,7 +64,7 @@ export const fetchDataByFilter = async (dishType, searchQuery) => {
     }
 };
 
-export const fetchNextPage = (nextPage) => {
+export const fetchNextPage = (nextPage: string): Promise<IDataApi> => {
     return axios.get(nextPage, {
         params: {
             app_key: APP_KEY,
@@ -74,9 +76,9 @@ export const fetchNextPage = (nextPage) => {
     });
 };
 
-export const fetchRandomData = async () => {
+export const fetchRandomData = async (): Promise<IDishesApiResponse> => {
     try {
-        const res = await axios.get(`${BASE_URL}?mealType=Breakfast&mealType=Teatime&dishType=Desserts&dishType=Drinks&dishType=Main%20course&dishType=Pancake&dishType=Sandwiches&dishType=Biscuits%20and%20cookies`, {
+        const res = await axios.get<IDishesApiResponse>(`${BASE_URL}?mealType=Breakfast&mealType=Teatime&dishType=Desserts&dishType=Drinks&dishType=Main%20course&dishType=Pancake&dishType=Sandwiches&dishType=Biscuits%20and%20cookies`, {
             params: {
                 app_key: APP_KEY,
                 app_id: APP_ID,
@@ -89,12 +91,13 @@ export const fetchRandomData = async () => {
         return res.data;
     } catch (error) {
         console.log(error);
+        throw error;
     }
 };
 
-export const fetchById = async id => {
+export const fetchById = async (id?: string): Promise<IDishInfo> => {
     try {
-        const res = await axios.get(`${BASE_URL}/${id}?`, {
+        const res = await axios.get<IDishInfo>(`${BASE_URL}/${id}?`, {
             params: {
                 app_key: APP_KEY,
                 app_id: APP_ID,
@@ -104,5 +107,6 @@ export const fetchById = async id => {
         return res.data;
     } catch (error) {
         console.log(error);
+        throw error;
     }
 };

@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
-import { fetchNextPage } from '../../services/apiEdamam';
-import Loader from '../Loader/Loader';
-import DishesList from '../DishesList/DishesList';
+import { fetchNextPage } from '../../services/apiEdamam.js';
+import Loader from '../Loader/Loader.jsx';
+import DishesList from '../DishesList/DishesList.jsx';
 import styles from './styles.module.css';
-import DishesFilter from '../DishesFilter/DishesFilter';
-import { useSearch } from '../../contexts/Context.jsx';
+import DishesFilter from '../DishesFilter/DishesFilter.jsx';
+import { useSearch } from '../../contexts/Context.tsx';
 import useFetchData from '../../hooks/useFetch.js';
-import ShowMoreButton from '../Buttons/ShowMoreButton/ShowMoreButton.jsx';
-import ScrollTopButton from '../Buttons/ScrollTopButton/ScrollTopButton.jsx';
+import ShowMoreButton from '../Buttons/ShowMoreButton/ShowMoreButton.js';
+import ScrollTopButton from '../Buttons/ScrollTopButton/ScrollTopButton.js';
 import NotFoundBySearchError from '../NotFoundBySearchError/NotFoundBySearchError.jsx';
+import { IFetchData } from '../../interfaces/index.ts';
 
 const Dishes = () => {
-    const [selectedDishType, setSelectedDishType] = useState(null);
-    const [showScrollToTop, setShowScrollToTop] = useState(false);
+    const [selectedDishType, setSelectedDishType] = useState<string | null>(null);
+    const [showScrollToTop, setShowScrollToTop] = useState<boolean>(false);
     const {
         isLoading,
         data,
@@ -27,13 +28,13 @@ const Dishes = () => {
         fetchDataWithFilter,
         fetchDataWithoutFilter,
         fetchDataBySearch,
-    } = useFetchData();
+    }: IFetchData = useFetchData();
 
     const { searchQuery, setSearchQuery, setIsFilterApplied } = useSearch();
-    const dishTypes = ['Desserts', 'Drinks', 'Main course', 'Pancake', 'Sandwiches', 'Biscuits and cookies'];
+    const dishTypes: string[] = ['Desserts', 'Drinks', 'Main course', 'Pancake', 'Sandwiches', 'Biscuits and cookies'];
 
     useEffect(() => {
-        if (selectedDishType || searchQuery) {
+        if ((selectedDishType || searchQuery) && typeof selectedDishType === 'string') {
             fetchDataWithFilter(selectedDishType, searchQuery)
         } else {
             fetchDataWithoutFilter();
@@ -61,11 +62,12 @@ const Dishes = () => {
         }
     }, []);
 
-    const ShowMoreData = async () => {
+    const showMoreData = async () => {
         if (nextPage) {
             setIsLoading(true);
             try {
                 const res = await fetchNextPage(nextPage);
+                console.log(res);
                 const newDishes = res.data.hits.map(item => item.recipe);
                 setData(prevData => [...prevData, ...newDishes]);
                 setIsLastPage(!res.data._links.next);
@@ -108,7 +110,7 @@ const Dishes = () => {
                             />
                             <DishesList dishes={data} />
                             {!isLastPage && nextPage && (
-                                <ShowMoreButton ShowMoreData={ShowMoreData} />
+                                <ShowMoreButton showMoreData={showMoreData} />
                             )}
                             <ScrollTopButton show={showScrollToTop} />
                         </>

@@ -1,10 +1,17 @@
-import { useSearch } from '../../contexts/Context.jsx';
+import { useSearch } from '../../contexts/Context.tsx';
 import styles from './styles.module.css';
 
-const DishesFilter = ({ dishTypes, selectedDishType, setSelectedDishType, onRefresh }) => {
+interface Props {
+    dishTypes: string[];
+    selectedDishType: string | null;
+    setSelectedDishType: (dishType: string | null) => void;
+    onRefresh: () => void;
+}
+
+const DishesFilter = ({ dishTypes, selectedDishType, setSelectedDishType, onRefresh }: Props) => {
     const { isFilterApplied } = useSearch();
 
-    const handleFilterClick = (dishType) => {
+    const handleFilterClick = (dishType: string) => {
         setSelectedDishType(selectedDishType === dishType ? null : dishType);
         console.log("Selected Dish Type:", selectedDishType);
     };

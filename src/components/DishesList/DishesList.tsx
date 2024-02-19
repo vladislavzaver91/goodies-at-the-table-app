@@ -1,7 +1,12 @@
+import { IDishes } from '../../interfaces';
 import DishItem from '../DishItem/DishItem';
 import styles from './styles.module.css'
 
-const DishesList = ({ dishes }) => {
+interface Props {
+    dishes: IDishes[];
+}
+
+const DishesList = ({ dishes }: Props) => {
     return (
         <ul className={styles.dishList}>
             {dishes.map((recipe, index) => (
